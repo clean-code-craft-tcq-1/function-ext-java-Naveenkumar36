@@ -39,6 +39,6 @@ public class ValidateBMSVariants {
         return validateBMSVariants.stream()
               .filter(ValidateBMSVariants::isNotValid)
               .map(ValidateBMSVariants::getMessage)
-              .collect(Collectors.toUnmodifiableList());
+              .collect(Collectors.toList());
     }
 }
