@@ -2,6 +2,7 @@ package vitals;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * @author {@literal Jayaram Naveenkumar (jayaram.naveenkumar@in.bosch.com)}
@@ -34,11 +35,10 @@ public class ValidateBMSVariants {
         return message;
     }
 
-    public static String check(List<ValidateBMSVariants> validateBMSVariants) {
+    public static List<String> check(List<ValidateBMSVariants> validateBMSVariants) {
         return validateBMSVariants.stream()
               .filter(ValidateBMSVariants::isNotValid)
-              .findFirst()
               .map(ValidateBMSVariants::getMessage)
-              .orElse(null);
+              .collect(Collectors.toList());
     }
 }

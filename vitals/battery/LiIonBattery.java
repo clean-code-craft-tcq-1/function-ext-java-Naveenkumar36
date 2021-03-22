@@ -108,13 +108,23 @@ public class LiIonBattery {
           float chargeRate
     )
     {
-        LiIonBattery liIonBattery = new LiIonBattery(temperature, soc, chargeRate);
-        String hasError = ValidateBMSVariants.check(liIonBattery.variants());
-        if (hasError != null) {
+        List<String> hasError = getBatteryStatus(temperature, soc, chargeRate);
+        if (!hasError.isEmpty()) {
             System.out.println(hasError);
             return false;
         }
         return true;
+    }
+
+    public static List<String> getBatteryStatus(
+          float temperature,
+          float soc,
+          float chargeRate
+    )
+    {
+        LiIonBattery liIonBattery = new LiIonBattery(temperature, soc, chargeRate);
+        List<String> batteryStatus = ValidateBMSVariants.check(liIonBattery.variants());
+        return batteryStatus;
     }
 
     public static boolean isBatteryOkWithInputInTemperatureScale(
@@ -123,19 +133,12 @@ public class LiIonBattery {
           float chargeRate
     )
     {
-        LiIonBattery liIonBattery =
-              new LiIonBattery(
-                    isTempValidReturnFunction(temperature)
-                          .apply(Float.parseFloat(temperature.substring(0, temperature.length() - 1))),
-                    soc,
-                    chargeRate
-              );
-        String hasError = ValidateBMSVariants.check(liIonBattery.variants());
-        if (hasError != null) {
-            System.out.println(hasError);
-            return false;
-        }
-        return true;
+        return isBatteryOk(
+              isTempValidReturnFunction(temperature)
+                    .apply(Float.parseFloat(temperature.substring(0, temperature.length() - 1))),
+              soc,
+              chargeRate
+        );
     }
 
     private static Function<Float, Float> isTempValidReturnFunction(String temperature) {
