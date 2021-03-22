@@ -36,6 +36,7 @@ We will explore the charging phase of Li-ion batteries to start with.
 1. Separate pure functions from I/O
 1. Avoided duplication
 1. Completed the test condition.
+1. Added reporting functionality
 
 ## The Exploration
 
