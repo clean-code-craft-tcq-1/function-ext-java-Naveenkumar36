@@ -27,15 +27,15 @@ We will explore the charging phase of Li-ion batteries to start with.
 - The code here has high complexity in a single function.
 - The tests are not complete - they do not cover all the needs of a consumer
 
-## Tasks
+## Changes done
 
-1. Reduce the cyclomatic complexity.
+1. Added language feature
+1. Reduced cyclomatic complexity
+1. Added warning feature
+1. Added temperature scale 
 1. Separate pure functions from I/O
-1. Avoid duplication - functions that do nearly the same thing
-1. Complete the tests - cover all conditions.
-1. To take effective action, we need to know
-the abnormal measure and the breach -
-whether high or low. Add this capability.
+1. Avoided duplication
+1. Completed the test condition.
 
 ## The Exploration
 
