@@ -1,7 +1,7 @@
 package vitals;
 
 import vitals.battery.LiIonBattery;
-import vitals.language.Language;
+import vitals.language.LanguageSelector;
 
 public final class Main {
 
@@ -10,7 +10,7 @@ public final class Main {
     }
 
     public static void main(String[] args) throws IllegalArgumentException {
-        Language.setPreference("German");
+        LanguageSelector.setPreference("German");
         assert (LiIonBattery.isBatteryOk(25, 70, 0.7f) == true);
         assert (LiIonBattery.isBatteryOk(0, 85, 0.0f) == false);
         assert (LiIonBattery.isBatteryOk(44, 85, 0.0f) == false);

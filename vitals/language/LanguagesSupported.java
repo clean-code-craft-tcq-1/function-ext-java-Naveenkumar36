@@ -6,16 +6,20 @@ import java.util.ResourceBundle;
 /**
  * @author {@literal Jayaram Naveenkumar (jayaram.naveenkumar@in.bosch.com)}
  */
-enum LanguageSupported {
-    ENGLISH(Language.fetchResourceBasedOnLanguage(Locale.ENGLISH)),
-    GERMAN(Language.fetchResourceBasedOnLanguage(Locale.GERMAN));
+enum LanguagesSupported {
+    ENGLISH(fetchResourceBasedOnLanguage(Locale.ENGLISH)),
+    GERMAN(fetchResourceBasedOnLanguage(Locale.GERMAN));
     private final ResourceBundle userMessages;
 
-    LanguageSupported(ResourceBundle userMessages) {
+    LanguagesSupported(ResourceBundle userMessages) {
         this.userMessages = userMessages;
     }
 
     ResourceBundle fetchResourceBundle() {
         return userMessages;
+    }
+
+    private static ResourceBundle fetchResourceBasedOnLanguage(Locale language) {
+        return ResourceBundle.getBundle("message", language);
     }
 }

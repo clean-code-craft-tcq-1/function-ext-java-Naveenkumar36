@@ -11,7 +11,7 @@ import java.util.function.Function;
 import vitals.TemperatureScale;
 import vitals.ValidateBMSVariants;
 import vitals.bms.BMS;
-import vitals.language.Language;
+import vitals.language.LanguageSelector;
 
 import static vitals.bms.BMSCheck.*;
 
@@ -53,7 +53,7 @@ public class LiIonBattery {
                     Temperature.MAX_WARNING_TEMPERATURE_THRESHOLD
               ),
               input.get(BMS.TEMPERATURE),
-              Language.getSelectedLanguage().getString(TEMPERATURE_ABOVE_THRESHOLD_WARNING)
+              LanguageSelector.getSelectedLanguage().getString(TEMPERATURE_ABOVE_THRESHOLD_WARNING)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(
               isApproachingBelowThreshold(
@@ -61,43 +61,43 @@ public class LiIonBattery {
                     Temperature.MIN_WARNING_TEMPERATURE_THRESHOLD
               ),
               input.get(BMS.TEMPERATURE),
-              Language.getSelectedLanguage().getString(TEMPERATURE_BELOW_THRESHOLD_WARNING)
+              LanguageSelector.getSelectedLanguage().getString(TEMPERATURE_BELOW_THRESHOLD_WARNING)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(
               isBelowThreshold(Temperature.MIN_TEMPERATURE_THRESHOLD),
               input.get(BMS.TEMPERATURE),
-              Language.getSelectedLanguage().getString(TEMPERATURE_BELOW_THRESHOLD)
+              LanguageSelector.getSelectedLanguage().getString(TEMPERATURE_BELOW_THRESHOLD)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(
               isAboveThreshold(Temperature.MAX_TEMPERATURE_THRESHOLD),
               input.get(BMS.TEMPERATURE),
-              Language.getSelectedLanguage().getString(TEMPERATURE_ABOVE_THRESHOLD)
+              LanguageSelector.getSelectedLanguage().getString(TEMPERATURE_ABOVE_THRESHOLD)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(
               isApproachingBelowThreshold(StateOfCharge.MIN_SOC, StateOfCharge.MIN_WARNING_SOC),
               input.get(BMS.SOC),
-              Language.getSelectedLanguage().getString(STATE_OF_CHARGE_BELOW_THRESHOLD_WARNING)
+              LanguageSelector.getSelectedLanguage().getString(STATE_OF_CHARGE_BELOW_THRESHOLD_WARNING)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(
               isApproachingAboveThreshold(StateOfCharge.MAX_SOC, StateOfCharge.MAX_WARNING_SOC),
               input.get(BMS.SOC),
-              Language.getSelectedLanguage().getString(STATE_OF_CHARGE_ABOVE_THRESHOLD_WARNING)
+              LanguageSelector.getSelectedLanguage().getString(STATE_OF_CHARGE_ABOVE_THRESHOLD_WARNING)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(isBelowThreshold(StateOfCharge.MIN_SOC),
-              input.get(BMS.SOC), Language.getSelectedLanguage().getString(STATE_OF_CHARGE_BELOW_THRESHOLD)
+              input.get(BMS.SOC), LanguageSelector.getSelectedLanguage().getString(STATE_OF_CHARGE_BELOW_THRESHOLD)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(isAboveThreshold(StateOfCharge.MAX_SOC),
-              input.get(BMS.SOC), Language.getSelectedLanguage().getString(STATE_OF_CHARGE_ABOVE_THRESHOLD)
+              input.get(BMS.SOC), LanguageSelector.getSelectedLanguage().getString(STATE_OF_CHARGE_ABOVE_THRESHOLD)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(
               isApproachingAboveThreshold(ChargingRate.MAX_CHARGING_RATE, ChargingRate.MAX_WARNING_CHARGING_RATE),
               input.get(BMS.CHARGINGRATE),
-              Language.getSelectedLanguage().getString(CHARGING_RATE_ABOVE_THRESHOLD_WARNING)
+              LanguageSelector.getSelectedLanguage().getString(CHARGING_RATE_ABOVE_THRESHOLD_WARNING)
         ));
         validateBMSVariants.add(new ValidateBMSVariants(
               isAboveThreshold(ChargingRate.MAX_CHARGING_RATE),
               input.get(BMS.CHARGINGRATE),
-              Language.getSelectedLanguage().getString(CHARGING_RATE_ABOVE_THRESHOLD)
+              LanguageSelector.getSelectedLanguage().getString(CHARGING_RATE_ABOVE_THRESHOLD)
         ));
         return validateBMSVariants;
     }
